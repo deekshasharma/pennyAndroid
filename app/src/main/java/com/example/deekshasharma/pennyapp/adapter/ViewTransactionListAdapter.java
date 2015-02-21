@@ -10,17 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.deekshasharma.pennyapp.R;
-import com.example.deekshasharma.pennyapp.Transaction;
+import com.example.deekshasharma.pennyapp.model.TransactionItem;
 
 import java.util.List;
 
 public class ViewTransactionListAdapter extends BaseAdapter{
 
     private Context context;
-    private List<Transaction> transactionList;
+    private List<TransactionItem> transactionList;
 
 
-    public ViewTransactionListAdapter(Context context, List<Transaction> transactionList)
+    public ViewTransactionListAdapter(Context context, List<TransactionItem> transactionList)
     {
         this.context = context;
         this.transactionList = transactionList;
@@ -50,10 +50,10 @@ public class ViewTransactionListAdapter extends BaseAdapter{
         TextView amount = (TextView) convertView.findViewById(R.id.amount);
         ImageView transactionIcon = (ImageView) convertView.findViewById(R.id.transaction_icon);
 
-//        date.setImageResource(transactionList.get(position).getDateIcon());
-//        transactionName.setText(transactionList.get(position).getTransactionName());
-//        amount.setText(transactionList.get(position).getAmount());
-//        transactionIcon.setImageResource(transactionList.get(position).getTransactionIcon());
+        date.setImageResource(transactionList.get(position).getDateIcon());
+        transactionName.setText(transactionList.get(position).getTransactionName());
+        amount.setText(transactionList.get(position).getAmount());
+        transactionIcon.setImageResource(transactionList.get(position).getTransactionIcon());
         return convertView;
     }
 }

@@ -60,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
         navDrawerItems = new ArrayList<>();
 
         // adding nav drawer items to array
-        // Transaction
+        // TransactionItem
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Summary
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
