@@ -60,18 +60,14 @@ public class MainActivity extends ActionBarActivity {
         navDrawerItems = new ArrayList<>();
 
         // adding nav drawer items to array
-        // Home
+        // Transaction
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-        // Find People
+        // Summary
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-        // Photos
+        // Budget
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        // Communities, Will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1), true, "22"));
-        // Pages
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-        // What's hot, We  will add a counter here
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1), true, "50+"));
+        // logout
+//        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
 
         // Recycle the typed array
@@ -153,7 +149,7 @@ public class MainActivity extends ActionBarActivity {
                 Fragment addTransactionFragment = new AddTransactionFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_container,addTransactionFragment).commit();
-                setTitle(R.string.add_transaction);
+                setTitle(R.string.add_transaction_title);
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -171,31 +167,21 @@ public class MainActivity extends ActionBarActivity {
     }
 
     /**
-     * Diplaying fragment view for selected nav drawer list item
+     * Display fragment view for selected nav drawer list item
      * */
     private void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new HomeFragment();
+                fragment = new ViewTransactionFragment();
                 break;
             case 1:
-                fragment = new FindPeopleFragment();
+                fragment = new SummaryFragment();
                 break;
             case 2:
-                fragment = new PhotosFragment();
+                fragment = new BudgetFragment();
                 break;
-            case 3:
-                fragment = new CommunityFragment();
-                break;
-            case 4:
-                fragment = new PagesFragment();
-                break;
-            case 5:
-                fragment = new WhatsHotFragment();
-                break;
-
             default:
                 break;
         }

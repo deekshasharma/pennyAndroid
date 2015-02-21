@@ -7,31 +7,28 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Home</item>
-        <item >Find People</item>
-        <item >Photos</item>
-        <item >Communities</item>
-        <item >Pages</item>
-        <item >What\'s Hot</item>
+        <item >Transactions</item>
+        <item >Summary</item>
+        <item >Budget</item>
     </string-array>
 
 
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_home</item>
-        <item>@drawable/ic_people</item>
-        <item>@drawable/ic_photos</item>
-        <item>@drawable/ic_communities</item>
-        <item>@drawable/ic_pages</item>
-        <item>@drawable/ic_whats_hot</item>
+        <item>@drawable/transaction</item>
+        <item>@drawable/summary</item>
+        <item>@drawable/budgets</item>
     </array>
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
 
     <!--<Add Transaction Fragment Title>-->
-    <string name="add_transaction"> Add New Transaction</string>
+    <string name="add_transaction_title">Add New Transaction</string>
+
+    <!--<Group Fragment title>-->
+    <string name="group_fragment_title">Choose Group</string>
 
 
 </resources>

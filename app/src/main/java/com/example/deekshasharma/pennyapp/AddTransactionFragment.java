@@ -1,10 +1,11 @@
 package com.example.deekshasharma.pennyapp;
 
+import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,6 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-//public class AddTransactionFragment extends Fragment implements View.OnClickListener{
 public class AddTransactionFragment extends Fragment {
 
     private TextView date;
@@ -36,23 +36,16 @@ public class AddTransactionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.fragment_add_transaction,container,false);
-        findViewsById(rootView);
+        onDateClickListener(rootView);
         setDate();
         onCategoryClickListener(rootView);
         return rootView;
     }
 
     /*
-     Find the view for date field
-    */
-//    public void findViewsById(View view)
-//    {
-//        date = (TextView) view.findViewById(R.id.date);
-//        date.setOnClickListener(this);
-//    }
-
-// added now
-    public void findViewsById(View view)
+    Listens to the date EditText
+     */
+    public void onDateClickListener(View view)
     {
         date = (TextView) view.findViewById(R.id.date);
         date.setOnClickListener(new View.OnClickListener() {
@@ -62,12 +55,6 @@ public class AddTransactionFragment extends Fragment {
             }
         });
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        if(v == date)
-//        {datePickerDialog.show();}
-//    }
 
 
     /*
@@ -95,6 +82,9 @@ public class AddTransactionFragment extends Fragment {
     }
 
 
+    /*
+    Listens to the category TextView
+     */
     private void onCategoryClickListener(View view)
     {
         category = (TextView) view.findViewById(R.id.category);
@@ -104,8 +94,15 @@ public class AddTransactionFragment extends Fragment {
                 Fragment groupFragment = new GroupFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_container,groupFragment).commit();
-
+                setTitle("Choose Group");
+//                setTitle(R.string.group_fragment_title);
             }
         });
     }
+
+    public void setTitle(CharSequence title) {
+        android.support.v7.app.ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
+        actionBar.setTitle(title);
+    }
+
 }
