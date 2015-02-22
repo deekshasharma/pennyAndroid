@@ -94,12 +94,15 @@ public class AddTransactionFragment extends Fragment {
                 Fragment groupFragment = new GroupFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_container,groupFragment).commit();
-                setTitle("Choose Group");
+                setTitle("Select Group");
 //                setTitle(R.string.group_fragment_title);
             }
         });
     }
 
+    /*
+    Sets the title on the action bar
+     */
     public void setTitle(CharSequence title) {
         android.support.v7.app.ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
         actionBar.setTitle(title);

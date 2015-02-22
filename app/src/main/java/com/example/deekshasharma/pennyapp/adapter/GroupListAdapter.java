@@ -9,15 +9,16 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.deekshasharma.pennyapp.R;
-import com.example.deekshasharma.pennyapp.model.NavDrawerItem;
+import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
+
 import java.util.List;
 
 public class GroupListAdapter extends BaseAdapter{
 
     private Context context;
-    private List<NavDrawerItem> navDrawerItems;
+    private List<IconWithTitleItem> navDrawerItems;
 
-    public GroupListAdapter(Context context, List<NavDrawerItem> navDrawerItems){
+    public GroupListAdapter(Context context, List<IconWithTitleItem> navDrawerItems){
         this.context = context;
         this.navDrawerItems = navDrawerItems;
     }

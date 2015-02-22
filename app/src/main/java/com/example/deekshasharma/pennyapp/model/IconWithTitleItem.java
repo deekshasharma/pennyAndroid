@@ -1,14 +1,14 @@
 package com.example.deekshasharma.pennyapp.model;
 
-public class NavDrawerItem {
+public class IconWithTitleItem {
 
 
         private String title;
         private int icon;
 
-        public NavDrawerItem(){}
+        public IconWithTitleItem(){}
 
-        public NavDrawerItem(String title, int icon){
+        public IconWithTitleItem(String title, int icon){
             this.title = title;
             this.icon = icon;
         }

@@ -8,17 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.deekshasharma.pennyapp.R;
-import com.example.deekshasharma.pennyapp.model.NavDrawerItem;
+import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class NavDrawerListAdapter extends BaseAdapter{
 
 
     private Context context;
-    private ArrayList<NavDrawerItem> navDrawerItems;
+    private List<IconWithTitleItem> navDrawerItems;
 
-    public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
+    public NavDrawerListAdapter(Context context, List<IconWithTitleItem> navDrawerItems){
         this.context = context;
         this.navDrawerItems = navDrawerItems;
     }

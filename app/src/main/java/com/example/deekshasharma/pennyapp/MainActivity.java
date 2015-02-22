@@ -15,7 +15,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.deekshasharma.pennyapp.adapter.NavDrawerListAdapter;
-import com.example.deekshasharma.pennyapp.model.NavDrawerItem;
+import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
+
 import java.util.ArrayList;
 
 
@@ -36,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
-    private ArrayList<NavDrawerItem> navDrawerItems;
+    private ArrayList<IconWithTitleItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
 
 
@@ -61,13 +62,13 @@ public class MainActivity extends ActionBarActivity {
 
         // adding nav drawer items to array
         // TransactionItem
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        navDrawerItems.add(new IconWithTitleItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Summary
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        navDrawerItems.add(new IconWithTitleItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // Budget
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        navDrawerItems.add(new IconWithTitleItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         // logout
-//        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+//        navDrawerItems.add(new IconWithTitleItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
 
         // Recycle the typed array
