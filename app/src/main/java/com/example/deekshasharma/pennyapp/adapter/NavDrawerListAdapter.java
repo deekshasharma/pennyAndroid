@@ -1,5 +1,4 @@
 package com.example.deekshasharma.pennyapp.adapter;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

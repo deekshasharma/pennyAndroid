@@ -17,6 +17,7 @@ public class ViewTransactionFragment extends Fragment{
 
     // added for testing
     TransactionItem transactionItem = new TransactionItem(R.drawable.two,"Costco","$45", R.drawable.food);
+
     private ListView listView;
 
     public ViewTransactionFragment(){}
@@ -32,8 +33,6 @@ public class ViewTransactionFragment extends Fragment{
         list.add(transactionItem);
         listView = (ListView) rootView.findViewById(R.id.transaction_list_view);
         listView.setAdapter(new ViewTransactionListAdapter(getActivity(),list));
-
-
 
         return rootView;
     }
