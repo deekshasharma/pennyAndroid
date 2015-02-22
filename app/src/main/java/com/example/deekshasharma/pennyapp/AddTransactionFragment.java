@@ -13,6 +13,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.deekshasharma.pennyapp.model.CategoryItem;
+
 import java.util.Calendar;
 
 public class AddTransactionFragment extends Fragment {
@@ -25,6 +27,7 @@ public class AddTransactionFragment extends Fragment {
     };
     private TextView category;
     private EditText transactionName;
+    private CategoryItem selectedCategoryItem;
 
 
     public AddTransactionFragment(){
@@ -106,6 +109,11 @@ public class AddTransactionFragment extends Fragment {
     public void setTitle(CharSequence title) {
         android.support.v7.app.ActionBar actionBar = ((ActionBarActivity)getActivity()).getSupportActionBar();
         actionBar.setTitle(title);
+    }
+
+    public void setSelectedCategoryItem(CategoryItem selectedCategoryItem) {
+        this.selectedCategoryItem = selectedCategoryItem;
+        category.setText(selectedCategoryItem.getName());
     }
 
 }

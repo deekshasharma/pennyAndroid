@@ -15,12 +15,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.deekshasharma.pennyapp.adapter.NavDrawerListAdapter;
+import com.example.deekshasharma.pennyapp.model.AllCategoryItems;
+import com.example.deekshasharma.pennyapp.model.CategoryItem;
 import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
 
 import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements CategoryFragment.OnCategorySelectListener {
 
 
     private DrawerLayout mDrawerLayout;
@@ -67,8 +69,6 @@ public class MainActivity extends ActionBarActivity {
         navDrawerItems.add(new IconWithTitleItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // Budget
         navDrawerItems.add(new IconWithTitleItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-        // logout
-//        navDrawerItems.add(new IconWithTitleItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
 
 
         // Recycle the typed array
@@ -111,6 +111,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
+
 
     /**
      * Slide menu item click listener
@@ -228,4 +229,21 @@ public class MainActivity extends ActionBarActivity {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+
+    /*
+    Method overridden  from CategoryFragment.onG
+     */
+    @Override
+    public void onCategorySelected(int position) {
+        AddTransactionFragment addTransactionFragment = (AddTransactionFragment)getFragmentManager().findFragmentById(R.id.add_transaction_form);
+        CategoryItem item = AllCategoryItems.categoryItemList.get(position);
+        addTransactionFragment.setSelectedCategoryItem(item);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container,addTransactionFragment).commit();
+
+    }
+
+
 }
+
+

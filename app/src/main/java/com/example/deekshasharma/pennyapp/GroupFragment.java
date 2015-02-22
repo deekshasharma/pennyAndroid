@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.deekshasharma.pennyapp.adapter.GroupListAdapter;
+import com.example.deekshasharma.pennyapp.model.AllCategoryItems;
 import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
 
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ public class GroupFragment extends Fragment{
     private TypedArray groupIcons;
     private List<IconWithTitleItem> groupList;
     private ListView groupListView;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,6 +42,12 @@ public class GroupFragment extends Fragment{
             {
                 Fragment categoryFragment = new CategoryFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                AllCategoryItems all = new AllCategoryItems();
+                ArrayList<String> categoriesList = all.getCategoryNames();
+                Bundle args = new Bundle();
+                args.putStringArrayList("categories", categoriesList);
+                categoryFragment.setArguments(args);
                 transaction.replace(R.id.frame_container,categoryFragment).commit();
                 setTitle("Select Category");
             }
