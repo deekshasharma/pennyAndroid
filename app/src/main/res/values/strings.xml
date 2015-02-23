@@ -7,11 +7,10 @@
 
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Transactions</item>
-        <item >Summary</item>
-        <item >Budget</item>
+        <item>Transactions</item>
+        <item>Summary</item>
+        <item>Budget</item>
     </string-array>
-
 
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
@@ -21,8 +20,7 @@
         <item>@drawable/budgets</item>
     </array>
 
-
-    <!--<Group Titles>-->
+    <!-- <Group Titles> -->
     <string-array name="group_titles">
         <item>Food And Drink</item>
         <item>Business</item>
@@ -47,8 +45,8 @@
         <item>Utilities</item>
     </string-array>
 
-    <!--<Group Icons>-->
-    <!--<Group Icons are kept in the same order as Group titles>-->
+    <!-- <Group Icons> -->
+    <!-- <Group Icons are kept in the same order as Group titles> -->
     <array name="group_icons">
         <item>@drawable/food</item>
         <item>@drawable/business</item>
@@ -76,9 +74,11 @@
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
 
-    <!--<Add TransactionItem Fragment Title>-->
+    <!-- <Add TransactionItem Fragment Title> -->
     <string name="add_transaction_title">Add New Transaction</string>
 
-    <!--<Group Fragment title>-->
+    <!-- <Group Fragment title> -->
     <string name="group_fragment_title">Choose Group</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

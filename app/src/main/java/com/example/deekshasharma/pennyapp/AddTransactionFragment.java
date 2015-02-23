@@ -1,20 +1,16 @@
 package com.example.deekshasharma.pennyapp;
 
-import android.app.ActionBar;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.example.deekshasharma.pennyapp.model.CategoryItem;
-
 import java.util.Calendar;
 
 public class AddTransactionFragment extends Fragment {
@@ -22,12 +18,13 @@ public class AddTransactionFragment extends Fragment {
     private TextView date;
     private Calendar myCalender ;
     private DatePickerDialog datePickerDialog;
-    private String[] allMonths = {
-            "JAN","FEB", "MAR","APR", "MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"
-    };
+    private String[] allMonths = {"JAN","FEB", "MAR","APR", "MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"};
     private TextView category;
     private EditText transactionName;
-    private CategoryItem selectedCategoryItem;
+    private Button addTransactionButton;
+    private EditText amount;
+    private String selectedCategoryId;
+    private String selectedCategoryGroup;
 
 
     public AddTransactionFragment(){
@@ -41,7 +38,13 @@ public class AddTransactionFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_add_transaction,container,false);
         onDateClickListener(rootView);
         setDate();
-        onCategoryClickListener(rootView);
+//        onCategoryClickListener(rootView);
+
+        /////
+        Bundle args = getArguments();
+        category = (TextView) rootView.findViewById(R.id.category);
+        category.setText(args.getString("selectedCategoryName"));
+
         return rootView;
     }
 
@@ -87,7 +90,7 @@ public class AddTransactionFragment extends Fragment {
 
     /*
     Listens to the category TextView
-     */
+
     private void onCategoryClickListener(View view)
     {
         category = (TextView) view.findViewById(R.id.category);
@@ -111,9 +114,6 @@ public class AddTransactionFragment extends Fragment {
         actionBar.setTitle(title);
     }
 
-    public void setSelectedCategoryItem(CategoryItem selectedCategoryItem) {
-        this.selectedCategoryItem = selectedCategoryItem;
-        category.setText(selectedCategoryItem.getName());
-    }
+
 
 }

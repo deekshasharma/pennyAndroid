@@ -1,6 +1,9 @@
 package com.example.deekshasharma.pennyapp.model;
 
-public class CategoryItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CategoryItem implements Parcelable{
 
     private String name;
     private String id;
@@ -23,5 +26,15 @@ public class CategoryItem {
 
     public String getGroupName() {
         return groupName;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

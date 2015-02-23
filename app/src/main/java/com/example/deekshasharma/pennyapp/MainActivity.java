@@ -148,10 +148,19 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
             case R.id.action_settings:
                 return true;
             case R.id.addButton:
-                Fragment addTransactionFragment = new AddTransactionFragment();
+//                Fragment addTransactionFragment = new AddTransactionFragment();
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.add(R.id.frame_container,addTransactionFragment,"addTransactionTag");
+//                transaction.replace(R.id.frame_container,addTransactionFragment).commit();
+//                setTitle(R.string.add_transaction_title);
+
+                ///////Added as alternative
+                Fragment groupFragment = new GroupFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_container,addTransactionFragment).commit();
-                setTitle(R.string.add_transaction_title);
+                transaction.replace(R.id.frame_container,groupFragment).commit();
+                setTitle("Select Group");
+
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -235,11 +244,19 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
      */
     @Override
     public void onCategorySelected(int position) {
-        AddTransactionFragment addTransactionFragment = (AddTransactionFragment)getFragmentManager().findFragmentById(R.id.add_transaction_form);
+
+
         CategoryItem item = AllCategoryItems.categoryItemList.get(position);
-        addTransactionFragment.setSelectedCategoryItem(item);
+        Fragment addTransactionFragment = new AddTransactionFragment();
+
+        Bundle args = new Bundle();
+        args.putString("selectedCategoryName",item.getName());
+        args.putString("selectedCategoryId",item.getId());
+        args.putString("selectedCategoryGroupName", item.getGroupName());
+        addTransactionFragment.setArguments(args);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container,addTransactionFragment).commit();
+        transaction.replace(R.id.frame_container, addTransactionFragment).commit();
+
 
     }
 
