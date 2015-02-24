@@ -160,7 +160,6 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
                 transaction.replace(R.id.frame_container,groupFragment).commit();
                 setTitle("Select Group");
 
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -241,7 +240,7 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
 
     /*
     Method overridden  from CategoryFragment.onG
-     */
+*/
     @Override
     public void onCategorySelected(int position) {
 
@@ -256,9 +255,26 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
         addTransactionFragment.setArguments(args);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, addTransactionFragment).commit();
+        setTitle("Add New Transaction");
 
 
     }
+
+    /*
+   Method overridden  from CategoryFragment.onG
+    */
+//    @Override
+//    public void onCategorySelected(int position) {
+//
+//
+//        CategoryItem item = AllCategoryItems.categoryItemList.get(position);
+//        Fragment addTransactionFragment = getFragmentManager().findFragmentByTag("addTransactionTag");
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.frame_container, addTransactionFragment).commit();
+//
+//
+//    }
+
 
 
 }

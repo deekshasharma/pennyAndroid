@@ -4,6 +4,11 @@
     android:layout_height="48dp"
     android:background="@drawable/list_selector">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"></LinearLayout>
+
     <ImageView
         android:id="@+id/date_icon"
         android:layout_width="25dp"
@@ -29,10 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/counter_bg"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="8dp"
-        android:textColor="@color/counter_text_color"/>
+        android:textColor="@color/counter_text_color"
+        android:layout_alignBottom="@+id/transaction_icon"
+        android:layout_alignRight="@+id/transaction_icon"
+        android:layout_alignEnd="@+id/transaction_icon" />
 
     <ImageView
         android:id="@+id/transaction_icon"
