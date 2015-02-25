@@ -42,11 +42,28 @@ public class GroupFragment extends Fragment{
             {
                 Fragment categoryFragment = new CategoryFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-                AllCategoryItems all = new AllCategoryItems();
-                ArrayList<String> categoriesList = all.getCategoryNames();
                 Bundle args = new Bundle();
-                args.putStringArrayList("categories", categoriesList);
+                if(position == 0)
+                {
+                    args.putString("groupName","Food & Drink");
+                }
+                else if(position == 6)
+                {
+                    args.putString("groupName","Sports & Fitness");
+                }
+                else if(position == 7)
+                {
+                    args.putString("groupName", "Gifts & Donations");
+                }
+                else if(position == 8)
+                {
+                    args.putString("groupName", "Health & Medical");
+                }
+                else
+                {
+                    args.putString("groupName", groupTitles[position]);
+                }
+
                 categoryFragment.setArguments(args);
                 transaction.replace(R.id.frame_container,categoryFragment).commit();
                 setTitle("Select Category");

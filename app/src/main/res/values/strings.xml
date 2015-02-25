@@ -22,15 +22,15 @@
 
     <!-- <Group Titles> -->
     <string-array name="group_titles">
-        <item>Food And Drink</item>
+        <item>Food &amp; Drink</item> 0
         <item>Business</item>
         <item>Children</item>
         <item>Culture</item>
         <item>Education</item>
         <item>Financial</item>
-        <item>Sports And Fitness</item>
-        <item>Gifts And Donations</item>
-        <item>Health And Medical</item>
+        <item>Sports &amp; Fitness</item>
+        <item>Gifts &amp; Donations</item>
+        <item>Health &amp; Medical</item>
         <item>Home</item>
         <item>Income</item>
         <item>Investment</item>

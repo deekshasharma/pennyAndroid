@@ -2,7 +2,9 @@ package com.example.deekshasharma.pennyapp;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ListFragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,50 +12,48 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.deekshasharma.pennyapp.model.CategoriesSingleton;
 import com.example.deekshasharma.pennyapp.model.CategoryItem;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CategoryFragment extends Fragment{
+public class CategoryFragment extends ListFragment{
 
-    private ListView categoryListView;
-    private ArrayList<String> allCategoryNames;
     private OnCategorySelectListener listener;
 
 
 
-    // added for testing now, this interface should be implemented by an activity that will call
     public interface OnCategorySelectListener {
         public void onCategorySelected(int position);
     }
 
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.fragment_category, container, false);
+   @Override
+    public void onCreate(Bundle bundle) {
+        super.onCreate(bundle);
 
         Bundle args = getArguments();
-        if(args != null)
-        {
-            allCategoryNames = args.getStringArrayList("categories");
+        if (args != null) {
+            String groupName = args.getString("groupName");
+
+            CategoriesSingleton categoriesSingleton = new CategoriesSingleton(getActivity(), this, groupName);
+            setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, categoriesSingleton.getListOfCategories()));
+
         }
-        categoryListView = (ListView) rootView.findViewById(R.id.category_list_view);
-        categoryListView.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, allCategoryNames));
-        categoryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-             listener.onCategorySelected(position);
+    }
 
-            }
-        });
-
-        return rootView;
+    /*
+    Get the names of all categories from the List<CategoryItem>
+     */
+    private List<String> getAllCategoryNames(List<CategoryItem> categoryItems)
+    {
+        List<String> allCategoryNames = new ArrayList<>();
+        for(CategoryItem item: categoryItems)
+        {
+            allCategoryNames.add(item.getName());
+        }
+        return allCategoryNames;
     }
 
 

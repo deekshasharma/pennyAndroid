@@ -3,7 +3,7 @@ package com.example.deekshasharma.pennyapp.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CategoryItem implements Parcelable{
+public class CategoryItem {
 
     private String name;
     private String id;
@@ -28,13 +28,9 @@ public class CategoryItem implements Parcelable{
         return groupName;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
+    public String toString() {
+        return name;
     }
 }
