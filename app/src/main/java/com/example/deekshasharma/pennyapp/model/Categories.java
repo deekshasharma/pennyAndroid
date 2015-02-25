@@ -21,24 +21,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CategoriesSingleton
+public class Categories
 {
-    private static CategoriesSingleton singleton;
     private static List<CategoryItem> allCategories;
     private static ListFragment listFragment;
     private Context context;
     private String groupName;
 
-    public static CategoriesSingleton getInstance(Context context, ListFragment listFragment, String groupName)
-    {
-        if(singleton == null)
-        {
-            singleton = new CategoriesSingleton(context,listFragment,groupName);
-        }
-        return singleton;
-    }
 
-    public CategoriesSingleton(Context context, ListFragment lf, String groupName)
+
+    public Categories(Context context, ListFragment lf, String groupName)
     {
         this.context = context;
         this.groupName = groupName;

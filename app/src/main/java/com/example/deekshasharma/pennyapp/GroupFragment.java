@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.deekshasharma.pennyapp.adapter.GroupListAdapter;
-import com.example.deekshasharma.pennyapp.model.AllCategoryItems;
 import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
 
 import java.util.ArrayList;
