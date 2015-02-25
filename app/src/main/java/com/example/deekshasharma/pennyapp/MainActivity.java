@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.deekshasharma.pennyapp.adapter.NavDrawerListAdapter;
 //import com.example.deekshasharma.pennyapp.model.AllCategoryItems;
+import com.example.deekshasharma.pennyapp.model.Categories;
 import com.example.deekshasharma.pennyapp.model.CategoryItem;
 import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
 
@@ -245,37 +246,20 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
     public void onCategorySelected(int position) {
 
 
-//        CategoryItem item = AllCategoryItems.categoryItemList.get(position);
-//        Fragment addTransactionFragment = new AddTransactionFragment();
-//
-//        Bundle args = new Bundle();
-//        args.putString("selectedCategoryName",item.getName());
-//        args.putString("selectedCategoryId",item.getId());
-//        args.putString("selectedCategoryGroupName", item.getGroupName());
-//        addTransactionFragment.setArguments(args);
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//        transaction.replace(R.id.frame_container, addTransactionFragment).commit();
-//        setTitle("Add New Transaction");
+        CategoryItem item = Categories.allCategories.get(position);
+        Fragment addTransactionFragment = new AddTransactionFragment();
+
+        Bundle args = new Bundle();
+        args.putString("selectedCategoryName",item.getName());
+        args.putString("selectedCategoryId",item.getId());
+        args.putString("selectedCategoryGroupName", item.getGroupName());
+        addTransactionFragment.setArguments(args);
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, addTransactionFragment).commit();
+        setTitle("Add New Transaction");
 
 
     }
-
-    /*
-   Method overridden  from CategoryFragment.onG
-    */
-//    @Override
-//    public void onCategorySelected(int position) {
-//
-//
-//        CategoryItem item = AllCategoryItems.categoryItemList.get(position);
-//        Fragment addTransactionFragment = getFragmentManager().findFragmentByTag("addTransactionTag");
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//        transaction.replace(R.id.frame_container, addTransactionFragment).commit();
-//
-//
-//    }
-
-
 
 }
 

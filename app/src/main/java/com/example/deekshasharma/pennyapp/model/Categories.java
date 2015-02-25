@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class Categories
 {
-    private static List<CategoryItem> allCategories;
+    public static List<CategoryItem> allCategories;
     private static ListFragment listFragment;
     private Context context;
     private String groupName;

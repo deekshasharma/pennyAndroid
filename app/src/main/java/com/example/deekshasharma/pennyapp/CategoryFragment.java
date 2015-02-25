@@ -3,7 +3,12 @@ package com.example.deekshasharma.pennyapp;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.deekshasharma.pennyapp.model.Categories;
 import com.example.deekshasharma.pennyapp.model.CategoryItem;
@@ -22,7 +27,8 @@ public class CategoryFragment extends ListFragment{
         public void onCategorySelected(int position);
     }
 
-   @Override
+
+    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
 
@@ -31,24 +37,16 @@ public class CategoryFragment extends ListFragment{
             String groupName = args.getString("groupName");
 
             Categories categoriesSingleton = new Categories(getActivity(), this, groupName);
-            setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, categoriesSingleton.getListOfCategories()));
+            setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, Categories.allCategories));
 
         }
     }
 
-    /*
-    Get the names of all categories from the List<CategoryItem>
-     */
-    private List<String> getAllCategoryNames(List<CategoryItem> categoryItems)
-    {
-        List<String> allCategoryNames = new ArrayList<>();
-        for(CategoryItem item: categoryItems)
-        {
-            allCategoryNames.add(item.getName());
-        }
-        return allCategoryNames;
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+        listener.onCategorySelected(position);
     }
-
 
     @Override
     public void onAttach(Activity activity)
