@@ -21,17 +21,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Categories
-{
+public class Categories {
     public static List<CategoryItem> allCategories;
     private static ListFragment listFragment;
     private Context context;
     private String groupName;
 
 
-
-    public Categories(Context context, ListFragment lf, String groupName)
-    {
+    public Categories(Context context, ListFragment lf, String groupName) {
         this.context = context;
         this.groupName = groupName;
         listFragment = lf;
@@ -40,10 +37,9 @@ public class Categories
 
     }
 
-    private void getCategoriesFromServer(String groupName)
-    {
+    private void getCategoriesFromServer(String groupName) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        final String url = " https://api-pennyapp.rhcloud.com/rest/categories/groups/"+groupName.replace(" ","%20");
+        final String url = " https://api-pennyapp.rhcloud.com/rest/categories/groups/" + groupName.replace(" ", "%20");
         JsonArrayRequest arrayRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -73,30 +69,19 @@ public class Categories
     /*
     Parse the JSONArray response received from Server and add to the ArrayList<CategoryItem>
      */
-    private void createCategoryCollectionFromJsonResponse(JSONArray response)
-    {
+    private void createCategoryCollectionFromJsonResponse(JSONArray response) {
 
-        for(int i = 0; i < response.length(); i++)
-        {
+        for (int i = 0; i < response.length(); i++) {
             try {
                 JSONObject categoryJSON = response.getJSONObject(i);
                 CategoryItem item = new CategoryItem(categoryJSON.getString("name"),
-                                                     categoryJSON.getString("id"),
-                                                     categoryJSON.getString("groupName"));
-               allCategories.add(item);
+                        categoryJSON.getString("id"),
+                        categoryJSON.getString("groupName"));
+                allCategories.add(item);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
         ((BaseAdapter) listFragment.getListView().getAdapter()).notifyDataSetChanged();
     }
-
-    /*
-    Returns the list of all Categories for the selected group name
-     */
-    public List<CategoryItem> getListOfCategories()
-    {
-        return allCategories;
-    }
 }
-

@@ -38,7 +38,6 @@ public class CategoryFragment extends ListFragment{
 
             Categories categoriesSingleton = new Categories(getActivity(), this, groupName);
             setListAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, Categories.allCategories));
-
         }
     }
 

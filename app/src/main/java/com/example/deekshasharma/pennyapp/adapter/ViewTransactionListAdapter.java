@@ -31,7 +31,8 @@ public class ViewTransactionListAdapter extends BaseAdapter{
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(int position)
+    {
         return transactionList.get(position);
     }
 
@@ -45,15 +46,18 @@ public class ViewTransactionListAdapter extends BaseAdapter{
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.transaction_list_item, null);
 
-        ImageView date = (ImageView) convertView.findViewById(R.id.date_icon);
+//        ImageView date = (ImageView) convertView.findViewById(R.id.date_icon);
+//        ImageView transactionIcon = (ImageView) convertView.findViewById(R.id.transaction_icon);
         TextView transactionName = (TextView) convertView.findViewById(R.id.transaction_name);
         TextView amount = (TextView) convertView.findViewById(R.id.amount);
-        ImageView transactionIcon = (ImageView) convertView.findViewById(R.id.transaction_icon);
+        TextView date = (TextView) convertView.findViewById(R.id.date);
 
-        date.setImageResource(transactionList.get(position).getDateIcon());
+
+//        date.setImageResource(transactionList.get(position).getDateIcon());
+//        transactionIcon.setImageResource(transactionList.get(position).getTransactionIcon());
         transactionName.setText(transactionList.get(position).getTransactionName());
         amount.setText(transactionList.get(position).getAmount());
-        transactionIcon.setImageResource(transactionList.get(position).getTransactionIcon());
+        date.setText(transactionList.get(position).getTransactionDate());
         return convertView;
     }
 }

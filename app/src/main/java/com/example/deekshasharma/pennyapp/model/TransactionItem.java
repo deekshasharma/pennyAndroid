@@ -2,21 +2,29 @@ package com.example.deekshasharma.pennyapp.model;
 
 public class TransactionItem {
 
-    private int dateIcon;
+//    private int dateIcon;
     private String transactionName;
+    private String transactionDate;
     private String amount;
     private int transactionIcon;
+    private int transactionId;
 
-    public TransactionItem(int dateIcon, String transactionName, String amount, int transactionIcon)
+
+    public TransactionItem(String date, String transactionName, String amount)
     {
-        this.dateIcon = dateIcon;
+        this.transactionDate = date;
         this.transactionName = transactionName;
         this.amount = amount;
-        this.transactionIcon = transactionIcon;
     }
 
-    public int getDateIcon() {
-        return dateIcon;
+//    public String getDateIcon()
+//    {
+//        return transactionDate;
+//    }
+
+
+    public String getTransactionDate() {
+        return transactionDate;
     }
 
     public String getTransactionName() {
@@ -27,7 +35,15 @@ public class TransactionItem {
         return amount;
     }
 
-    public int getTransactionIcon() {
-        return transactionIcon;
-    }
+//    public int getTransactionIcon() {
+//        return transactionIcon;
+//    }
+
+//    public void setTransactionId(int transactionId) {
+//        this.transactionId = transactionId;
+//    }
+//
+//    public int getTransactionId() {
+//        return transactionId;
+//    }
 }

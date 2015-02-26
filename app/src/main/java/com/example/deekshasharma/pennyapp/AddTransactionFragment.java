@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -32,13 +33,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class AddTransactionFragment extends Fragment {
 
     private TextView date;
     private Calendar myCalender;
     private DatePickerDialog datePickerDialog;
     private String[] allMonths = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
-    private TextView category;
+    private TextView categoryName;
     private EditText transactionName;
     private Button addTransactionButton;
     private EditText amount;
@@ -60,15 +63,11 @@ public class AddTransactionFragment extends Fragment {
 
         /////
         Bundle args = getArguments();
-        category = (TextView) rootView.findViewById(R.id.category);
-        category.setText(args.getString("selectedCategoryName"));
+        categoryName = (TextView) rootView.findViewById(R.id.category);
+        categoryName.setText(args.getString("selectedCategoryName"));
         selectedCategoryId = args.getString("selectedCategoryId");
         selectedCategoryGroup = args.getString("selectedCategoryGroupName");
-//
-        ///
         onAddTransactionClickListener(rootView);
-
-
         return rootView;
     }
 
@@ -109,17 +108,17 @@ public class AddTransactionFragment extends Fragment {
 
 
     /*
-    Listens to the category TextView
+    Listens to the categoryName TextView
 */
     private void onCategoryClickListener(View view)
     {
-        category = (TextView) view.findViewById(R.id.category);
-        category.setOnClickListener( new View.OnClickListener() {
+        categoryName = (TextView) view.findViewById(R.id.category);
+        categoryName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment groupFragment = new GroupFragment();
                 FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_container,groupFragment).commit();
+                transaction.replace(R.id.frame_container, groupFragment).commit();
                 setTitle("Select Group");
 //                setTitle(R.string.group_fragment_title);
             }
@@ -140,9 +139,13 @@ public class AddTransactionFragment extends Fragment {
         addTransactionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                postJSON(view);
                 postTransaction();
+                Toast.makeText(getActivity(),"Transaction Added", Toast.LENGTH_SHORT).show();
 
+                //Go to View Transaction Fragment
+                Fragment viewTransactionFragment = new ViewTransactionFragment();
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_container,viewTransactionFragment).commit();
             }
         });
     }
@@ -230,12 +233,17 @@ public class AddTransactionFragment extends Fragment {
         Map<String, String> params = new HashMap<>();
 
         params.put("memberId", "d8922b44-75af-4810-a87e-77adcf433cfd");
-        params.put("categoryId", "94dc9ccd-819e-4fc6-8760-af15d57d2ad6");
-        params.put("name", "Costco by Deeksha");
-        params.put("amount", "55");
-        params.put("transactionDate", "2015-02-23T21:10:47.863");
-        params.put("debit", "true");
+        params.put("categoryId", selectedCategoryId);
 
+        transactionName = (EditText) getView().findViewById(R.id.transaction_name);
+        params.put("name", transactionName.getText().toString());
+
+        amount = (EditText) getView().findViewById(R.id.amount);
+        params.put("amount", amount.getText().toString());
+
+        params.put("transactionDate", "2015-02-25T21:10:47.863");
+
+        params.put("debit", "true");
         return params;
     }
 }
