@@ -15,7 +15,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import com.example.deekshasharma.pennyapp.adapter.NavDrawerListAdapter;
-//import com.example.deekshasharma.pennyapp.model.AllCategoryItems;
 import com.example.deekshasharma.pennyapp.model.Categories;
 import com.example.deekshasharma.pennyapp.model.CategoryItem;
 import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
@@ -192,6 +191,7 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
                 break;
             case 2:
                 fragment = new BudgetFragment();
+                setTitle("Budgets");
                 break;
             default:
                 break;
