@@ -59,7 +59,7 @@ public class AddTransactionFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_add_transaction, container, false);
         onDateClickListener(rootView);
         setDate();
-//        onCategoryClickListener(rootView);
+        onCategoryClickListener(rootView);
 
         /////
         Bundle args = getArguments();

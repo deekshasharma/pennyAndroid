@@ -2,6 +2,7 @@ package com.example.deekshasharma.pennyapp;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -148,17 +149,16 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
             case R.id.action_settings:
                 return true;
             case R.id.addButton:
-//                Fragment addTransactionFragment = new AddTransactionFragment();
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.add(R.id.frame_container,addTransactionFragment,"addTransactionTag");
-//                transaction.replace(R.id.frame_container,addTransactionFragment).commit();
-//                setTitle(R.string.add_transaction_title);
-
                 ///////Added as alternative
-                Fragment groupFragment = new GroupFragment();
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_container,groupFragment).commit();
-                setTitle("Select Group");
+//                Fragment groupFragment = new GroupFragment();
+//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_container,groupFragment).commit();
+//                setTitle("Select Group");
+
+                // Activity Code added
+                Intent intent = new Intent(this,AddActivity.class);
+                startActivity(intent);
+                setTitle(R.string.add_title); // Not Working
 
             default:
                 return super.onOptionsItemSelected(item);

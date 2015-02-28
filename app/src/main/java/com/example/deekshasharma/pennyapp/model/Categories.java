@@ -3,6 +3,7 @@ package com.example.deekshasharma.pennyapp.model;
 import android.app.ListFragment;
 import android.content.Context;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 
 import com.android.volley.AuthFailureError;
@@ -17,21 +18,34 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Categories {
-    public static List<CategoryItem> allCategories;
-    private static ListFragment listFragment;
+    public static List<CategoryItem> allCategories = Arrays.asList(new CategoryItem("name", "id", "groupName"));
+//    private static ListFragment listFragment;
+
+    private ArrayAdapter categoryListAdapter;
     private Context context;
     private String groupName;
 
 
-    public Categories(Context context, ListFragment lf, String groupName) {
+//    public Categories(Context context, ListFragment lf, String groupName) {
+//        this.context = context;
+//        this.groupName = groupName;
+//        listFragment = lf;
+//        allCategories = new ArrayList<>();
+//        getCategoriesFromServer(this.groupName);
+//
+//    }
+
+    /////// Added to test with Activity
+    public Categories(Context context,  String groupName, ArrayAdapter categoryListAdapter) {
         this.context = context;
         this.groupName = groupName;
-        listFragment = lf;
+        this.categoryListAdapter = categoryListAdapter;
         allCategories = new ArrayList<>();
         getCategoriesFromServer(this.groupName);
 
@@ -82,6 +96,9 @@ public class Categories {
                 e.printStackTrace();
             }
         }
-        ((BaseAdapter) listFragment.getListView().getAdapter()).notifyDataSetChanged();
+//        ((BaseAdapter) listFragment.getListView().getAdapter()).notifyDataSetChanged();
+        categoryListAdapter.notifyDataSetChanged();
+
+
     }
 }
