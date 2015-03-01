@@ -23,7 +23,7 @@ import com.example.deekshasharma.pennyapp.model.IconWithTitleItem;
 import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity implements CategoryFragment.OnCategorySelectListener {
+public class MainActivity extends ActionBarActivity {
 
 
     private DrawerLayout mDrawerLayout;
@@ -149,11 +149,6 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
             case R.id.action_settings:
                 return true;
             case R.id.addButton:
-                ///////Added as alternative
-//                Fragment groupFragment = new GroupFragment();
-//                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_container,groupFragment).commit();
-//                setTitle("Select Group");
 
                 // Activity Code added
                 Intent intent = new Intent(this,AddActivity.class);
@@ -242,24 +237,24 @@ public class MainActivity extends ActionBarActivity implements CategoryFragment.
     /*
     Method overridden  from CategoryFragment.onG
 */
-    @Override
-    public void onCategorySelected(int position) {
-
-
-        CategoryItem item = Categories.allCategories.get(position);
-        Fragment addTransactionFragment = new AddTransactionFragment();
-
-        Bundle args = new Bundle();
-        args.putString("selectedCategoryName",item.getName());
-        args.putString("selectedCategoryId",item.getId());
-        args.putString("selectedCategoryGroupName", item.getGroupName());
-        addTransactionFragment.setArguments(args);
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, addTransactionFragment).commit();
-        setTitle("Add New Transaction");
-
-
-    }
+//    @Override
+//    public void onCategorySelected(int position) {
+//
+//
+//        CategoryItem item = Categories.allCategories.get(position);
+//        Fragment addTransactionFragment = new AddTransactionFragment();
+//
+//        Bundle args = new Bundle();
+//        args.putString("selectedCategoryName",item.getName());
+//        args.putString("selectedCategoryId",item.getId());
+//        args.putString("selectedCategoryGroupName", item.getGroupName());
+//        addTransactionFragment.setArguments(args);
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.frame_container, addTransactionFragment).commit();
+//        setTitle("Add New Transaction");
+//
+//
+//    }
 
 }
 
