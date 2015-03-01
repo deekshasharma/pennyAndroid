@@ -5,8 +5,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.deekshasharma.pennyapp.adapter.CategoryListAdapter;
 import com.example.deekshasharma.pennyapp.model.Categories;
@@ -34,15 +37,16 @@ public class CategoryActivity extends ActionBarActivity {
         ArrayAdapter categoryAdapter = new CategoryListAdapter(this,R.layout.category_list_item,Categories.allCategories);
         categoryListView.setAdapter(categoryAdapter);
         Categories categoriesSingleton = new Categories(this, groupName,categoryAdapter);
-
-//        List<CategoryItem> list = new ArrayList<>();
-//        list.add(new CategoryItem("Grocery","a2","Food & Drink"));
-//        list.add(new CategoryItem("Bar","a2","Food & Drink"));
-//        list.add(new CategoryItem("Restaurant","a2","Food & Drink"));
-//        categoryListView = (ListView) findViewById(R.id.category_list_view);
-//        ArrayAdapter categoryAdapter = new CategoryListAdapter(this,R.layout.category_list_item,list);
-//        categoryListView.setAdapter(categoryAdapter);
-
+        categoryListView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),"Clicked at position: "+position,Toast.LENGTH_SHORT).show();
+                Intent goToAddIntent = new Intent(getApplicationContext(),AddActivity.class);
+                goToAddIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                goToAddIntent.putExtra("position",position);
+                startActivity(goToAddIntent);
+            }
+        });
 
     }
 

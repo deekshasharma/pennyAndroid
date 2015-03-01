@@ -42,19 +42,19 @@ public class GroupActivity extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Intent intent = new Intent(getApplicationContext(), CategoryActivity.class);
+                Intent goToCategoryIntent = new Intent(getApplicationContext(), CategoryActivity.class);
                 if (position == 0) {
-                    intent.putExtra("groupName", "Food & Drink");
+                    goToCategoryIntent.putExtra("groupName", "Food & Drink");
                 } else if (position == 6) {
-                    intent.putExtra("groupName", "Sports & Fitness");
+                    goToCategoryIntent.putExtra("groupName", "Sports & Fitness");
                 } else if (position == 7) {
-                    intent.putExtra("groupName", "Gifts & Donations");
+                    goToCategoryIntent.putExtra("groupName", "Gifts & Donations");
                 } else if (position == 8) {
-                    intent.putExtra("groupName", "Health & Medical");
+                    goToCategoryIntent.putExtra("groupName", "Health & Medical");
                 } else {
-                    intent.putExtra("groupName", groupTitles[position]);
+                    goToCategoryIntent.putExtra("groupName", groupTitles[position]);
                 }
-                startActivity(intent);
+                startActivity(goToCategoryIntent);
             }
         });
     }
